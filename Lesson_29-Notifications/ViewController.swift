@@ -48,8 +48,8 @@ class ViewController: UIViewController {
         
         
         var date = DateComponents()
-        date.hour = 21
-        date.minute = 04
+        date.hour = 22
+        date.minute = 39
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
