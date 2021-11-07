@@ -42,14 +42,14 @@ class ViewController: UIViewController {
 //        создание кнопки в нотификации
 //        можем создавать больше одной кнопки (должны быть разные - identifier)
         let action = UNNotificationAction(identifier: "123", title: "Start", options: .foreground, icon: nil)
-        let text = UNTextInputNotificationAction(identifier: "12", title: "Start2", options: .foreground, icon: nil, textInputButtonTitle: "go", textInputPlaceholder: "placeholder")
+        let text = UNTextInputNotificationAction(identifier: "12", title: "Start2", options: .authenticationRequired, icon: nil, textInputButtonTitle: "go", textInputPlaceholder: "placeholder")
         let category = UNNotificationCategory(identifier: "alarm", actions: [action, text], intentIdentifiers: ["12345"], options: .allowInCarPlay)
         center.setNotificationCategories([category])
         
         
         var date = DateComponents()
         date.hour = 22
-        date.minute = 39
+        date.minute = 49
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
