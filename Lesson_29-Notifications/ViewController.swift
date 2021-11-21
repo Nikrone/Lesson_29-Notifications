@@ -17,9 +17,9 @@ class ViewController: UIViewController {
         
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted {
-                print("Yay!")
+                print("Yes")
             } else {
-                print("D'oh")
+                print("No")
             }
         }
         
@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         let center = UNUserNotificationCenter.current()
         
         let content = UNMutableNotificationContent()
-        content.title = "Late wake up call"
+        content.title = "Wake up call"
         content.body = "The early bird catches the worm, but the second mouse gets the cheese."
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "fizzbuzz"]
@@ -46,16 +46,14 @@ class ViewController: UIViewController {
         let category = UNNotificationCategory(identifier: "alarm", actions: [action, text], intentIdentifiers: ["12345"], options: .allowInCarPlay)
         center.setNotificationCategories([category])
         
-        
         var date = DateComponents()
-        date.hour = 21
-        date.minute = 18
+        date.hour = 22
+        date.minute = 28
         let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         center.add(request)
     }
-    
     
 }
 
@@ -71,7 +69,6 @@ extension ViewController: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .badge, .sound])
     }
-    
     
 }
 
